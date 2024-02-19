@@ -1,4 +1,4 @@
-from Calculator import square_root, factorial, natural_log, power
+from calculator import square_root, factorial, natural_log, power
 
 import pytest
 import math
