@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'yourusername/scientific-calculator'
+        DOCKER_IMAGE = 'radhika20/scientific-calculator'
         DOCKER_HUB_CREDENTIALS = 'docker-hub-credentials'
     }
 
