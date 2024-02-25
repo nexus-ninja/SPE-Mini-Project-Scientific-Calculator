@@ -31,6 +31,7 @@ pipeline {
             sh 'pwd' // Print the working directory
             sh 'ls -al' // List files in the current directory
             sh 'ansible-playbook -i ansible/hosts ansible/deploy.yml' // Adjust the path as necessary
+                }
         
             }
         }
