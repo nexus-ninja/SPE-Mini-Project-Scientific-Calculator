@@ -28,7 +28,7 @@ pipeline {
         stage('Deploy with Ansible') {
             steps {
                 script {
-                    sh 'ansible-playbook -i ansible/hosts ansible/deploy_app.yml'
+                    sh 'ansible-playbook -i ansible/hosts ansible/deploy.yml'
                 }
             }
         }
