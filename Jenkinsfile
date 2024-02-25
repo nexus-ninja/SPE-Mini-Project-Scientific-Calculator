@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
         
-            sh '/usr/local/bin/ansible-playbook -i inventory playbook.yml' // Adjust the path as necessary
+            sh '/usr/local/bin/ansible-playbook -i inventory deploy.yml' // Adjust the path as necessary
                 }
         
             }
