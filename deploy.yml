@@ -3,6 +3,9 @@
   hosts: localhost
   remote_user: radhika
   become: false
+  vars:
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+
   tasks:
     - name: Install Docker
       apt:
@@ -14,6 +17,7 @@
         become: true
         username: radhika20
         password: "{{ lookup('env', 'DOCKER_PASSWORD') }}"
+      delegate_to: localhost
 
     - name: Pull the Scientific Calculator Docker image
       docker_image:
@@ -27,4 +31,3 @@
         state: started
         ports:
           - "8081:80"
-
