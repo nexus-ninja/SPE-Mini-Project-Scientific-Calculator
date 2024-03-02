@@ -13,7 +13,7 @@
       docker_login:
         become: true
         username: radhika20
-        password: "{{ lookup('env', 'DOCKERHUB_PASSWORD') }}"
+        password: "{{ lookup('env', 'DOCKER_PASSWORD') }}"
 
     - name: Pull the Scientific Calculator Docker image
       docker_image:
