@@ -2,7 +2,7 @@
 - name: Pull Docker Image from Docker Hub
   hosts: localhost
   remote_user: Radhika
-  become: false
+  become: true
   tasks:
     - name: Install Docker
       apt:
