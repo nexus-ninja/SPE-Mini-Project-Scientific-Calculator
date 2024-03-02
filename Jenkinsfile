@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy with Ansible') {
             steps {
                 script {
-                    withCredentials([string(credentialsId: 'your-sudo-password-credential-id', variable: 'SUDO_PASSWORD')]){
+                    withCredentials([string(credentialsId: 'radhika', variable: 'radhika1')]){
                     ansiblePlaybook(
                         playbook: 'deploy.yml',
                         inventory: 'inventory',
