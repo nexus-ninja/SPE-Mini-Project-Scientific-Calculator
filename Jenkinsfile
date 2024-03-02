@@ -4,6 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'radhika20/scientific-calculator'
         DOCKER_HUB_CREDENTIALS = 'docker-hub-credentials'
+        ANSIBLE_CONFIG = '/home/radhika/ansible-projects/ansible.cfg'
     }
 
     stages {
