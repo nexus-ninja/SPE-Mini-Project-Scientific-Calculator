@@ -1,43 +1,27 @@
 ---
-- name: Pull and Run Docker Image from Docker Hub
+- name: Deploy Scientific Calculator Application
   hosts: localhost
-  become: false
+  become: true
   tasks:
     - name: Install Docker
-      become: true
       apt:
         name: docker.io
         state: latest
 
-    - name: Start Docker service
-      become: true
-      service:
-        name: docker
-        state: started
-
     - name: Log in to Docker Hub
-      become: true
       docker_login:
         username: radhika20
-        password: "your_dockerhub_password"
+        password: your_dockerhub_password
 
-    - name: Pull Docker Image
-      become: true
+    - name: Pull the Scientific Calculator Docker image
       docker_image:
         name: radhika20/scientific-calculator
         source: pull
-      register: docker_pull_result
-
-    - name: Display Docker Pull Result
-      debug:
-        var: docker_pull_result
 
     - name: Run the Scientific Calculator container
-      become: true
       docker_container:
         name: scientific-calculator
         image: radhika20/scientific-calculator
         state: started
         ports:
           - "80:80"
-        restart_policy: always
