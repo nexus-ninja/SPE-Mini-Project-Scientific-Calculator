@@ -1,7 +1,7 @@
 ---
 - name: Deploy Scientific Calculator Application
   hosts: my_servers
-  become: no
+  become: false
   tasks:
     - name: Install Docker
       apt:
