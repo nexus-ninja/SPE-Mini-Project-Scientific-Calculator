@@ -1,7 +1,7 @@
 ---
 - name: Deploy Scientific Calculator Application
   hosts: localhost
-  become: true
+  become: false
   tasks:
     - name: Install Docker
       apt:
