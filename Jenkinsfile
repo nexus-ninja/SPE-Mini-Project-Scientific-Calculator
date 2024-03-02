@@ -24,6 +24,16 @@ pipeline {
             }
             }
         }
+        stage('Deploy with Ansible') {
+            steps {
+                script {
+                   ansiblePlaybook(
+                        playbook: 'deploy.yml',
+                        inventory: 'inventory',
+                        extras: '-vvv'
+                     )
+                } }
+        }
 
 
     }
