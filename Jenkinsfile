@@ -37,7 +37,7 @@ pipeline {
         stage('Push Docker Images') {
             steps {
                 script{
-                    docker.withRegistry('', 'DockerHubCred') {
+                    docker.withRegistry('', 'docker_hub_credentials') {
                     sh 'docker tag scientific-calculator radhika20/scientific-calculator:latest'
                     sh 'docker push radhika20/scientific-calculator'
                     }
