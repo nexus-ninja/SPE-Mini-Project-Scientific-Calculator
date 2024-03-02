@@ -30,7 +30,8 @@ pipeline {
                 script {
                    ansiblePlaybook(
                         playbook: 'deploy.yml',
-                        inventory: 'inventory'
+                        inventory: 'inventory',
+                        extras: '-vvv'
                      )
                 } }
         }
