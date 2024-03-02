@@ -1,6 +1,6 @@
 ---
 - name: Deploy Scientific Calculator Application
-  hosts: my_servers
+  hosts: localhost
   become: false
   tasks:
     - name: Install Docker
