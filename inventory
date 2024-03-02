@@ -1,2 +1,6 @@
+[my_servers]
+192.168.1.10
+192.168.1.11
+[local]
 localhost ansible_connection=local
 ansible_ssh_common_args = '-o StrictHostKeyChecking=no'
