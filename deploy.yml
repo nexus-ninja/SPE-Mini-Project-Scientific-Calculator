@@ -1,6 +1,7 @@
 ---
 - name: Deploy Scientific Calculator Application
   hosts: localhost
+  connection: local
   become: yes
   tasks:
     - name: Install Docker
@@ -21,7 +22,6 @@
     - name: Run the Scientific Calculator container
       docker_container:
         name: scientific-calculator
-        image: radhika20/scientific-calculator
+        image: radhika20/scientific-calculator:latest
         state: started
-        ports:
-          - "80:80"
+       
