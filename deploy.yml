@@ -2,7 +2,7 @@
 - name: Deploy Scientific Calculator Application
   hosts: 
     localhost:
-      ansible_python_interpreter: /path/to/python
+      ansible_python_interpreter: /usr/lib/python3/dist-packages/ansible
   remote_user: radhika
   become: false
   tasks:
