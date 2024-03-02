@@ -5,8 +5,6 @@ pipeline {
         DOCKER_IMAGE = 'radhika20/scientific-calculator'
         DOCKER_HUB_CREDENTIALS = 'docker-hub-credentials'
         ANSIBLE_CONFIG = '/home/radhika/ansible-projects/ansible.cfg'
-        ID = 'radhika'
-        PASS = 'radhika1'
     }
 
     stages {
@@ -31,15 +29,15 @@ pipeline {
        stage('Deploy with Ansible') {
             steps {
                 script {
-                    withCredentials([string(credentialsId: 'ID' , variable: 'PASS')]){
+                    
                     ansiblePlaybook(
                         playbook: 'deploy.yml',
                         inventory: 'inventory',
                         become: true, // Ensure Ansible uses sudo
-                        extras: '-vvv' // Verbose mode for debugging
+                        extras: "-vvv --extra-vars ansible_become_pass=radhika1" // Verbose mode for debugging
                     )
                 }
-                }
+                
             }
         }
     }
