@@ -5,6 +5,7 @@ pipeline {
         DOCKER_IMAGE = 'radhika20/scientific-calculator'
         DOCKER_HUB_CREDENTIALS = 'docker-hub-credentials'
         ANSIBLE_CONFIG = '/home/radhika/ansible-projects/ansible.cfg'
+        PYTHON_INTERPRETER = '/usr/bin/python3'
     }
 
     stages {
@@ -42,7 +43,7 @@ pipeline {
                         playbook: 'deploy.yml',
                         inventory: 'inventory',
                         become: true, // Ensure Ansible uses sudo
-                        extras: "-vvv --extra-vars ansible_become_pass=radhika1" // Verbose mode for debugging
+                       extras: "-vvv --extra-vars ansible_become_pass=radhika1 --extra-vars ansible_python_interpreter=${PYTHON_INTERPRETER}"  // Verbose mode for debugging
                     )
                 }
                 
