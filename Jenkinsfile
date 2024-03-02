@@ -29,7 +29,7 @@ pipeline {
         stage('Preparation') {
     steps {
         script {
-            sh 'wsl -e /usr/bin/python3 -m pip install docker'// Attempts to install with pip first, then pip3
+            sh 'wsl /usr/bin/python3 -m pip install docker'// Attempts to install with pip first, then pip3
         }
     }
 }
