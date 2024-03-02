@@ -2,51 +2,40 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE_NAME = 'radhika20/scientific-calculator'
-        GITHUB_REPO_URL = 'https://github.com/radhu20/scientific-calculator.git'
+        DOCKER_IMAGE = 'yourusername/scientific-calculator'
+        DOCKER_HUB_CREDENTIALS = 'docker-hub-credentials'
     }
 
     stages {
-        
-        stage('Checkout') {
+        stage('Build') {
             steps {
                 script {
-                    // Checkout the code from the GitHub repository
-                    git branch: 'main', url: "${GITHUB_REPO_URL}"
+                    sh 'docker build -t $DOCKER_IMAGE .'
                 }
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Docker Push') {
             steps {
                 script {
-                    // Build Docker image
-                    docker.build("${DOCKER_IMAGE_NAME}", '.')
+                    sh 'echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin'
+                    sh 'docker push $DOCKER_IMAGE'
                 }
             }
         }
 
-        stage('Push Docker Images') {
-            steps {
-                script{
-                    docker.withRegistry('', 'docker_hub_credentials') {
-                    sh 'docker tag scientific-calculator radhika20/scientific-calculator:latest'
-                    sh 'docker push radhika20/scientific-calculator'
-                    }
-                 }
-            }
-        }
-
-   stage('Run Ansible Playbook') {
+        stage('Deploy with Ansible') {
             steps {
                 script {
-                    ansiblePlaybook(
-                        playbook: 'deploy.yml',
-                        inventory: 'inventory'
-                     )
+                    sh 'ansible-playbook -i ansible/hosts ansible/deploy_app.yml'
                 }
             }
         }
+    }
 
+    post {
+        always {
+            sh 'docker logout'
+        }
     }
 }
