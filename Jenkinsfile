@@ -27,19 +27,23 @@ pipeline {
         }
 
         stage('Deploy with Ansible') {
-            steps {
-                script {
-                    withCredentials([string(credentialsId: 'admin', variable: 'radhika1')]){
-                    ansiblePlaybook(
-                        playbook: 'deploy.yml',
-                        inventory: 'inventory',
-                        become: true, // Ensure Ansible uses sudo
-                        extras: '-vvv' // Verbose mode for debugging
-                    )
-                }
-                }
+    steps {
+        script {
+            withCredentials([string(credentialsId: 'admin', variable: 'radhika1')]) {
+                ansiblePlaybook(
+                    playbook: 'deploy.yml',
+                    inventory: 'inventory',
+                    become: true, // Ensure Ansible uses sudo
+                    extras: '-vvv', // Verbose mode for debugging
+                    credentialsId: 'admin', // Specify the Jenkins credential ID
+                    sudoUser: 'radhika', // Specify the sudo user as 'radhika'
+                    sudoPass: "${radhika1}" // Use the variable here
+                )
             }
         }
+    }
+}
+
     }
 
     post {
