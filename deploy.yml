@@ -1,15 +1,28 @@
 ---
-- name: Pull Docker Image from Docker Hub
+- name: Pull and Run Docker Image from Docker Hub
   hosts: localhost
-  remote_user: Radhika
-  become: true
+  become: false
   tasks:
     - name: Install Docker
+      become: true
       apt:
         name: docker.io
         state: latest
-        
+
+    - name: Start Docker service
+      become: true
+      service:
+        name: docker
+        state: started
+
+    - name: Log in to Docker Hub
+      become: true
+      docker_login:
+        username: radhika20
+        password: "your_dockerhub_password"
+
     - name: Pull Docker Image
+      become: true
       docker_image:
         name: radhika20/scientific-calculator
         source: pull
@@ -18,10 +31,13 @@
     - name: Display Docker Pull Result
       debug:
         var: docker_pull_result
-        
-    - name: Start Docker service
-      service:
-        name: docker
+
+    - name: Run the Scientific Calculator container
+      become: true
+      docker_container:
+        name: scientific-calculator
+        image: radhika20/scientific-calculator
         state: started
-    - name: Running container
-      shell: docker run -it -d --name scientific-calculator radhika20/scientific-calculator
+        ports:
+          - "80:80"
+        restart_policy: always
