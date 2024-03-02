@@ -30,7 +30,7 @@ pipeline {
                 script {
                    ansiblePlaybook(
                         playbook: 'deploy.yml',
-                        inventory: 'host',
+                        inventory: 'hosts',
                         extras: '-vvv'
                      )
                 } }
