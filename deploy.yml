@@ -4,10 +4,11 @@
   remote_user: Radhika
   become: false
   tasks:
-  -  name: Install Docker
+    - name: Install Docker
       apt:
         name: docker.io
         state: latest
+        
     - name: Pull Docker Image
       docker_image:
         name: radhika20/scientific-calculator
