@@ -24,6 +24,6 @@
         name: scientific-calculator
         image: radhika20/scientific-calculator:latest
         state: started
-       ports:
-       - "8081:80"
+        ports:
+         - "8081:80"
 
