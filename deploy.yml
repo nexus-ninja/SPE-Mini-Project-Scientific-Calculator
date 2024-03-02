@@ -26,3 +26,9 @@
         state: started
         ports:
           - "8081:80"
+    - name: Ensure required pip-packages are installed
+      pip:
+        name:
+          - docker>=1.8.0
+          - PyYAML>=3.11
+          - docker-compose>=1.7.0
