@@ -11,7 +11,7 @@
     - name: Log in to Docker Hub
       docker_login:
         username: radhika20
-        password: your_dockerhub_password
+        password: "{{ lookup('env', 'DOCKERHUB_PASSWORD') }}"
 
     - name: Pull the Scientific Calculator Docker image
       docker_image:
