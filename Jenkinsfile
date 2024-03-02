@@ -29,9 +29,7 @@ pipeline {
             steps {
                 script {
         
-           withCredentials([usernamePassword(credentialsId: 'YourCredentialID', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                     sh '/usr/bin/ansible-playbook -i inventory deploy.yml  -e docker_user=$DOCKER_USER -e docker_pass=$DOCKER_PASS'
-                } 
+           sh '/usr/bin/ansible-playbook -i inventory deploy.yml' 
                 }
         
             }
