@@ -29,12 +29,14 @@ pipeline {
         stage('Deploy with Ansible') {
             steps {
                 script {
+                    withCredentials([string(credentialsId: 'your-sudo-password-credential-id', variable: 'SUDO_PASSWORD')]){
                     ansiblePlaybook(
                         playbook: 'deploy.yml',
                         inventory: 'inventory',
                         become: true, // Ensure Ansible uses sudo
                         extras: '-vvv' // Verbose mode for debugging
                     )
+                }
                 }
             }
         }
