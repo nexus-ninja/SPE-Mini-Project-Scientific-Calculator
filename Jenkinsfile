@@ -18,25 +18,26 @@ pipeline {
 
         stage('Docker Push') {
             steps {
-               script {
+                script {
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                         sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
                     }
-            }
+                }
             }
         }
+
         stage('Deploy with Ansible') {
             steps {
                 script {
-                   ansiblePlaybook(
+                    ansiblePlaybook(
                         playbook: 'deploy.yml',
                         inventory: 'inventory',
-                        extras: '-vvv'
-                     )
-                } }
+                        become: true, // Ensure Ansible uses sudo
+                        extras: '-vvv' // Verbose mode for debugging
+                    )
+                }
+            }
         }
-
-
     }
 
     post {
