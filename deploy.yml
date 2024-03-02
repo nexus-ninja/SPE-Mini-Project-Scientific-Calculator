@@ -1,8 +1,8 @@
 ---
 - name: Deploy Scientific Calculator Application
   hosts: localhost
-  connection: local
-  become: yes
+  remote_user: Radhika
+  become: false
   tasks:
     - name: Install Docker
       apt:
@@ -11,6 +11,7 @@
 
     - name: Log in to Docker Hub
       docker_login:
+        become: true
         username: radhika20
         password: "{{ lookup('env', 'DOCKERHUB_PASSWORD') }}"
 
