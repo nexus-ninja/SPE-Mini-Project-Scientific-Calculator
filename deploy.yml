@@ -1,6 +1,6 @@
 ---
 - name: Deploy Scientific Calculator Application
-  hosts: Radhika
+  hosts: my_servers
   become: no
   tasks:
     - name: Install Docker
