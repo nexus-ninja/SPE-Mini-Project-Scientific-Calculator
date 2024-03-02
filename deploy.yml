@@ -1,7 +1,7 @@
 ---
 - name: Deploy Scientific Calculator Application
   hosts: localhost
-  remote_user: Radhika
+  remote_user: radhika
   become: false
   tasks:
     - name: Install Docker
@@ -26,5 +26,5 @@
         image: radhika20/scientific-calculator:latest
         state: started
         ports:
-         - "8081:80"
+    - "8081:80"
 
