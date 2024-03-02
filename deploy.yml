@@ -10,18 +10,18 @@
 
     - name: Log in to Docker Hub
       docker_login:
-        username: your_dockerhub_username
+        username: radhika20
         password: your_dockerhub_password
 
     - name: Pull the Scientific Calculator Docker image
       docker_image:
-        name: yourusername/scientific-calculator
+        name: radhika20/scientific-calculator
         source: pull
 
     - name: Run the Scientific Calculator container
       docker_container:
         name: scientific-calculator
-        image: yourusername/scientific-calculator
+        image: radhika20/scientific-calculator
         state: started
         ports:
           - "80:80"
