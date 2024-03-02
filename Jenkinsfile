@@ -2,30 +2,50 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'radhika20/scientific-calculator'
-        DOCKER_HUB_CREDENTIALS = 'docker-hub-credentials'
+        DOCKER_IMAGE_NAME = 'scientific-calculator'
+        GITHUB_REPO_URL = 'https://github.com/radhu20/scientific-calculator.git'
     }
 
     stages {
-        stage('Build') {
+          stage('Cleanup') {
+            steps {
+                script{   
+                // Remove specific Docker containers
+                sh 'docker rm -f scientific-calculator'
+                }
+            }
+        }
+        
+        stage('Checkout') {
             steps {
                 script {
-                    sh 'docker build -t $DOCKER_IMAGE .'
+                    // Checkout the code from the GitHub repository
+                    git branch: 'master', url: "${GITHUB_REPO_URL}"
                 }
             }
         }
 
-        stage('Docker Push') {
+        stage('Build Docker Image') {
             steps {
                 script {
-            withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-                sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
-            }
+                    // Build Docker image
+                    docker.build("${DOCKER_IMAGE_NAME}", '.')
                 }
             }
         }
 
-      stage('Run Ansible Playbook') {
+        stage('Push Docker Images') {
+            steps {
+                script{
+                    docker.withRegistry('', 'DockerHubCred') {
+                    sh 'docker tag scientific-calculator radhika20/scientific-calculator:latest'
+                    sh 'docker push radhika20/scientific-calculator'
+                    }
+                 }
+            }
+        }
+
+   stage('Run Ansible Playbook') {
             steps {
                 script {
                     ansiblePlaybook(
@@ -35,5 +55,6 @@ pipeline {
                 }
             }
         }
+
     }
 }
