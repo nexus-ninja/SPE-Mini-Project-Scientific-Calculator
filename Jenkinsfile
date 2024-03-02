@@ -25,6 +25,14 @@ pipeline {
                 }
             }
         }
+        stage('Preparation') {
+    steps {
+        script {
+            sh 'pip install docker || pip3 install docker' // Attempts to install with pip first, then pip3
+        }
+    }
+}
+
 
        stage('Deploy with Ansible') {
             steps {
