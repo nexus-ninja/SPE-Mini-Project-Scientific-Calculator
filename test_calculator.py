@@ -4,7 +4,7 @@ import pytest
 import math
 
 def test_square_root():
-    assert square_root(4) == 2
+    assert square_root(25) == 5
     assert square_root(16) == 4
     with pytest.raises(ValueError):
         square_root(-1)  # Test for a negative number, should raise ValueError
