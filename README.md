@@ -1,6 +1,6 @@
 # scientific-calculator
 
-#Index: 
+# Index: 
 
 a.Problem statement 
 
@@ -25,7 +25,7 @@ IDE: VS Code
 Language: Python 
 
 
-#Problem Statement 
+# Problem Statement 
 
 Create a scientific calculator program with the following user menu driven operations:  
 
@@ -65,7 +65,7 @@ or OpenStack cloud. You can also use Amazon AWS or Google Cloud or some other
 
 3rd party cloud 
 
-#Introduction to Devops 
+# Introduction to Devops 
 
 DevOps combines development and operations to increase the efficiency, speed, and security of software development and delivery compared to traditional processes. A more nimble software development lifecycle results in a competitive advantage for businesses and their customers. 
  
@@ -87,7 +87,7 @@ More security
 
 Less manual intervention (which means fewer chances of error) 
 
-#DevOps Lifecycle: 
+# DevOps Lifecycle: 
 
 Now that you know why DevOps and what is it exactly, we will learn all about the DevOps Lifecycle which will give you a clarit on why devops, that is divided into six different phases which will give a clear idea on why Devops: 
 
@@ -117,7 +117,7 @@ Jenkins: An open-source automation server used for continuous integration and co
 
  
 
-#Source Control Management (SCM) 
+# Source Control Management (SCM) 
 
 Tools Used: Github 
 Source code Language: Python 
@@ -153,7 +153,7 @@ Go to your repository on the GitHub website and refresh the page. You should see
 
  
 
-#Testing 
+# Testing 
 
 Tool used: Pytest 
 
@@ -174,7 +174,7 @@ With your tests written, you can now run them through PyTest. Open bash and exec
 PyTest will automatically discover and run all tests in files prefixed or suffixed with test_, providing a report on which tests passed or failed. 
 If all the test cases are executed successfully, you will get a message like this in the terminal. 
 
-#Building  
+# Building  
 
 Tools Used: PyInstaller 
 
@@ -198,7 +198,7 @@ Running the Executable:
 Windows: Navigate to the dist directory and double-click on the executable file to run the application. 
 macOS/Linux: Open a terminal, navigate to the dist directory, and execute the file by typing ./your_executable_name. 
  
-#Containerize 
+# Containerize 
 
 1. Write a Dockerfile 
 
@@ -218,7 +218,7 @@ docker tag scientific-calculator radhika20/scientific-calculator:latest
 
 docker push radhika20/scientific-calculator:latest 
 
-#Continuous Integration and Deployment 
+# Continuous Integration and Deployment 
 
 1. Install Jenkins: Download and install Jenkins on your server.  
 Install Java  
@@ -259,7 +259,6 @@ To copy admin password: sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 3. Install Necessary Plugins: Install plugins for Docker and Ansible integration in Jenkins. You can find these plugins in the "Manage Jenkins" > "Manage Plugins" section. 
 
- 
 4. Add Global Configuration tool: Go to “Manage Jenkins” > “Tools”
    
 5. Add Github and Docker Hub Credentials: Go to “Manage Jenkins” > “Configure” 
@@ -300,6 +299,6 @@ docker images
 
  docker run -it --name myHostContainer <Image-Id/Name>  
 
-#Conclusion 
+# Conclusion 
 
 The project effectively demonstrates the application of DevOps practices, showcasing the seamless integration of tools like Git, GitHub, VS Code, Docker, Ansible, and Jenkins. This integration facilitates a robust CI/CD pipeline, automating the software development lifecycle from code changes to deployment. Insights gained emphasize the importance of automation in achieving efficiency, consistency, and scalability. The experience underscores the critical role of collaboration and toolchain synergy in modern software development, paving the way for future enhancements and more complex implementations. 
