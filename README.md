@@ -161,7 +161,7 @@ Tool used: Pytest
     Open bash in vs code and run: 
 			                              pip install pytest 
 
-    Next create a test file named test_calculator.py to test the cases 
+2. Next create a test file named test_calculator.py to test the cases 
 
 Write Tests for Each Function: 
 Start by importing the functions from your calculator.py script. 
